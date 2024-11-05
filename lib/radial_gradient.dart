@@ -6,8 +6,8 @@ class CustomRadialGradient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 400,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         gradient: RadialGradient(
           center: Alignment.center,
