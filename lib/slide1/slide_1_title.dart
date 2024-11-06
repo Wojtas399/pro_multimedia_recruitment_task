@@ -18,11 +18,8 @@ class Slide1Title extends StatelessWidget {
         return AnimatedBuilder(
           animation: opacityAnimation,
           builder: (_, __) {
-            return Positioned(
-              top: -560,
-              left: positionAnimation.value,
-              right: 0,
-              bottom: 0,
+            return Transform.translate(
+              offset: Offset(positionAnimation.value, 0),
               child: Opacity(
                 opacity: opacityAnimation.value,
                 child: const Center(

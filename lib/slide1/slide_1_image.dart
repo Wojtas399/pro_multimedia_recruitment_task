@@ -18,11 +18,8 @@ class Slide1Image extends StatelessWidget {
         return AnimatedBuilder(
           animation: opacityAnimation,
           builder: (_, __) {
-            return Positioned(
-              top: -120,
-              left: 0,
-              right: positionAnimation.value,
-              bottom: 0,
+            return Transform.translate(
+              offset: Offset(positionAnimation.value, 0),
               child: Opacity(
                 opacity: opacityAnimation.value,
                 child: Image.asset('assets/2.png'),

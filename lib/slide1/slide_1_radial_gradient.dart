@@ -12,17 +12,32 @@ class Slide1RadialGradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: opacityAndScaleAnim,
-      builder: (_, __) {
-        return Opacity(
-          opacity: opacityAndScaleAnim.value,
-          child: Transform.scale(
-            scale: opacityAndScaleAnim.value,
-            child: const CustomRadialGradient(),
-          ),
-        );
+    final mediaQuery = MediaQuery.of(context);
+
+    return Positioned(
+      top: switch (mediaQuery.orientation) {
+        Orientation.portrait => -114,
+        Orientation.landscape => -60,
       },
+      left: 0,
+      right: 0,
+      bottom: 0,
+      child: AnimatedBuilder(
+        animation: opacityAndScaleAnim,
+        builder: (_, __) {
+          return Opacity(
+            opacity: opacityAndScaleAnim.value,
+            child: Transform.scale(
+              scale: opacityAndScaleAnim.value,
+              child: CustomRadialGradient(
+                  radius: switch (mediaQuery.orientation) {
+                Orientation.portrait => .35,
+                Orientation.landscape => .19,
+              }),
+            ),
+          );
+        },
+      ),
     );
   }
 }

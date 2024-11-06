@@ -2,11 +2,32 @@ import 'package:flutter/material.dart';
 
 import '../animated_path_service.dart';
 
-class Slide1Line1 extends CustomPainter {
+class Slide1Line1 extends StatelessWidget {
   final double maxWidth;
   final Animation<double> animation;
 
   const Slide1Line1({
+    super.key,
+    required this.maxWidth,
+    required this.animation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _LinePainter(
+        maxWidth: maxWidth,
+        animation: animation,
+      ),
+    );
+  }
+}
+
+class _LinePainter extends CustomPainter {
+  final double maxWidth;
+  final Animation<double> animation;
+
+  const _LinePainter({
     required this.maxWidth,
     required this.animation,
   }) : super(repaint: animation);
