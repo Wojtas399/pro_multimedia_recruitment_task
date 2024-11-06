@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../animated_path_service.dart';
 import '../extensions/build_context_extensions.dart';
+import '../path_service.dart';
 
 class Slide1Line2 extends StatelessWidget {
   final double maxWidth;
@@ -57,25 +58,13 @@ class _LinePainter extends CustomPainter {
       Offset(widthReturnStartStop, heightSpaceBetweenLines * 2),
       Offset(maxWidth, heightSpaceBetweenLines * 2),
     ];
+    final path = PathService().generateSnakeLinePath(points);
+    final animatedPath =
+        AnimatedPathService().createAnimatedPath(path, animationPercent);
     final paint = Paint()
       ..color = Colors.white
       ..strokeWidth = 0.5
       ..style = PaintingStyle.stroke;
-    final path = Path();
-    path.moveTo(points.first.dx, points.first.dy);
-    for (int i = 1; i < points.length - 2; i++) {
-      double xc = (points[i].dx + points[i + 1].dx) / 2;
-      double yc = (points[i].dy + points[i + 1].dy) / 2;
-      path.quadraticBezierTo(points[i].dx, points[i].dy, xc, yc);
-    }
-    path.quadraticBezierTo(
-      points[points.length - 2].dx,
-      points[points.length - 2].dy,
-      points[points.length - 1].dx,
-      points[points.length - 1].dy,
-    );
-    final animatedPath =
-        AnimatedPathService().createAnimatedPath(path, animationPercent);
     canvas.drawPath(animatedPath, paint);
   }
 
