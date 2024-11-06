@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
 import '../slides_actions.dart';
-import 'slide_2_image.dart';
-import 'slide_2_line_1.dart';
-import 'slide_2_line_2.dart';
-import 'slide_2_radial_gradient.dart';
-import 'slide_2_title.dart';
+import 'slide_3_image.dart';
+import 'slide_3_line.dart';
+import 'slide_3_radial_gradient.dart';
+import 'slide_3_title.dart';
 
-class Slide2 extends StatefulWidget {
-  const Slide2({super.key});
+class Slide3 extends StatefulWidget {
+  const Slide3({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,14 +18,12 @@ class Slide2 extends StatefulWidget {
   }
 }
 
-class _State extends State<Slide2> with TickerProviderStateMixin {
+class _State extends State<Slide3> with TickerProviderStateMixin {
   late AnimationController _radialGradientAnimController;
-  late AnimationController _line1AnimController;
-  late AnimationController _line2AnimController;
+  late AnimationController _lineAnimController;
   late AnimationController _titleAndImagePositionAnimController;
   late AnimationController _titleAndImageOpacityAnimController;
-  late Animation<double> _line1Anim;
-  late Animation<double> _line2Anim;
+  late Animation<double> _lineAnim;
   late Animation<double> _radialGradientOpacityAndScaleAnim;
   late Animation<double> _textPositionAnim;
   late Animation<double> _imagePositionAnim;
@@ -36,12 +33,10 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
   void initState() {
     const curves = Curves.easeInOut;
     _initializeRadialAnimation(curves);
-    _initializeLine1Anim(curves);
-    _initializeLine2Anim(curves);
+    _initializeLineAnim(curves);
     _initializeImageAndTextAnim(curves);
     _radialGradientAnimController.forward();
-    _line1AnimController.forward();
-    _line2AnimController.forward();
+    _lineAnimController.forward();
     Timer(
       const Duration(milliseconds: 500),
       () {
@@ -66,24 +61,13 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
     );
   }
 
-  void _initializeLine1Anim(Cubic curves) {
-    _line1AnimController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
-    _line1Anim = CurvedAnimation(
-      parent: _line1AnimController,
-      curve: curves,
-    );
-  }
-
-  void _initializeLine2Anim(Cubic curves) {
-    _line2AnimController = AnimationController(
+  void _initializeLineAnim(Cubic curves) {
+    _lineAnimController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2500),
     );
-    _line2Anim = CurvedAnimation(
-      parent: _line2AnimController,
+    _lineAnim = CurvedAnimation(
+      parent: _lineAnimController,
       curve: curves,
     );
   }
@@ -122,7 +106,7 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
     return Center(
       child: Stack(
         children: [
-          Slide2RadialGradient(
+          Slide3RadialGradient(
             opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
           ),
           Center(
@@ -137,10 +121,15 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
                       builder: (_, BoxConstraints constraints) {
                         return Stack(
                           children: [
-                            _AnimatedLines(
-                              line1Animation: _line1Anim,
-                              line2Animation: _line2Anim,
-                              constraints: constraints,
+                            Positioned(
+                              bottom: switch (context.deviceOrientation) {
+                                Orientation.portrait => 140,
+                                Orientation.landscape => 85,
+                              },
+                              child: Slide3Line(
+                                maxWidth: constraints.maxWidth,
+                                animation: _lineAnim,
+                              ),
                             ),
                             _AnimatedTitleAndImage(
                               titleAndImageOpacityAnim:
@@ -167,44 +156,6 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
   }
 }
 
-class _AnimatedLines extends StatelessWidget {
-  final Animation<double> line1Animation;
-  final Animation<double> line2Animation;
-  final BoxConstraints constraints;
-
-  const _AnimatedLines({
-    required this.line1Animation,
-    required this.line2Animation,
-    required this.constraints,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Slide2Line1(
-            maxWidth: constraints.maxWidth,
-            animation: line1Animation,
-          ),
-          SizedBox(
-            height: switch (context.deviceOrientation) {
-              Orientation.portrait => 140,
-              Orientation.landscape => 84,
-            },
-          ),
-          Slide2Line2(
-            maxWidth: constraints.maxWidth,
-            animation: line2Animation,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class _AnimatedTitleAndImage extends StatelessWidget {
   final Animation<double> titleAndImageOpacityAnim;
   final Animation<double> titlePositionAnim;
@@ -221,15 +172,15 @@ class _AnimatedTitleAndImage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Slide2Title(
+        Slide3Title(
           positionAnimation: titlePositionAnim,
           opacityAnimation: titleAndImageOpacityAnim,
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
         Flexible(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
-            child: Slide2Image(
+            child: Slide3Image(
               positionAnimation: imagePositionAnim,
               opacityAnimation: titleAndImageOpacityAnim,
             ),

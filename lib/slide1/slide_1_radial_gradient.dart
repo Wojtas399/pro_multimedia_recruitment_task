@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../extensions/build_context_extensions.dart';
 import '../radial_gradient.dart';
 
 class Slide1RadialGradient extends StatelessWidget {
@@ -12,10 +13,8 @@ class Slide1RadialGradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-
     return Positioned(
-      top: switch (mediaQuery.orientation) {
+      top: switch (context.deviceOrientation) {
         Orientation.portrait => -114,
         Orientation.landscape => -60,
       },
@@ -30,10 +29,11 @@ class Slide1RadialGradient extends StatelessWidget {
             child: Transform.scale(
               scale: opacityAndScaleAnim.value,
               child: CustomRadialGradient(
-                  radius: switch (mediaQuery.orientation) {
-                Orientation.portrait => .35,
-                Orientation.landscape => .19,
-              }),
+                radius: switch (context.deviceOrientation) {
+                  Orientation.portrait => .35,
+                  Orientation.landscape => .19,
+                },
+              ),
             ),
           );
         },

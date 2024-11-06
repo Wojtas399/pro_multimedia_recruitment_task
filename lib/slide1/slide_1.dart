@@ -125,36 +125,39 @@ class _State extends State<Slide1> with TickerProviderStateMixin {
           Slide1RadialGradient(
             opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
           ),
-          Container(
-            constraints: const BoxConstraints(maxWidth: 500),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: LayoutBuilder(
-                    builder: (_, BoxConstraints constraints) {
-                      return Stack(
-                        children: [
-                          _AnimatedLines(
-                            line1Animation: _line1Anim,
-                            line2Animation: _line2Anim,
-                            constraints: constraints,
-                          ),
-                          _AnimatedTitleAndImage(
-                            titleAndImageOpacityAnim: _imageAndTextOpacityAnim,
-                            titlePositionAnim: _textPositionAnim,
-                            imagePositionAnim: _imagePositionAnim,
-                          ),
-                        ],
-                      );
-                    },
+          Center(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 500),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: LayoutBuilder(
+                      builder: (_, BoxConstraints constraints) {
+                        return Stack(
+                          children: [
+                            _AnimatedLines(
+                              line1Animation: _line1Anim,
+                              line2Animation: _line2Anim,
+                              constraints: constraints,
+                            ),
+                            _AnimatedTitleAndImage(
+                              titleAndImageOpacityAnim:
+                                  _imageAndTextOpacityAnim,
+                              titlePositionAnim: _textPositionAnim,
+                              imagePositionAnim: _imagePositionAnim,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ),
-                ),
-                SlidesActions(
-                  onNextPressed: () {},
-                ),
-              ],
+                  SlidesActions(
+                    onNextPressed: () {},
+                  ),
+                ],
+              ),
             ),
           ),
         ],
