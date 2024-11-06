@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Slide1Title extends StatelessWidget {
+class Slide2Title extends StatelessWidget {
   final Animation<double> positionAnimation;
   final Animation<double> opacityAnimation;
 
-  const Slide1Title({
+  const Slide2Title({
     super.key,
     required this.positionAnimation,
     required this.opacityAnimation,
@@ -45,21 +45,14 @@ class _Text extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Spędzaj czas',
-          style: textStyle,
+          'Bierz udział',
+          style: textStyle?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'kreatywnie',
-              style: textStyle?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '!',
-              style: textStyle,
-            ),
-          ],
+        Text(
+          'w wydarzeniach!',
+          style: textStyle,
         ),
       ],
     );

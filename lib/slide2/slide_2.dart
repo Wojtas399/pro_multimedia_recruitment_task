@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
 import '../slides_actions.dart';
-import 'slide_1_image.dart';
-import 'slide_1_line_1.dart';
-import 'slide_1_line_2.dart';
-import 'slide_1_radial_gradient.dart';
-import 'slide_1_title.dart';
+import 'slide_2_image.dart';
+import 'slide_2_line_1.dart';
+import 'slide_2_line_2.dart';
+import 'slide_2_radial_gradient.dart';
+import 'slide_2_title.dart';
 
-class Slide1 extends StatefulWidget {
-  const Slide1({super.key});
+class Slide2 extends StatefulWidget {
+  const Slide2({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +19,7 @@ class Slide1 extends StatefulWidget {
   }
 }
 
-class _State extends State<Slide1> with TickerProviderStateMixin {
+class _State extends State<Slide2> with TickerProviderStateMixin {
   late AnimationController _radialGradientAnimController;
   late AnimationController _line1AnimController;
   late AnimationController _line2AnimController;
@@ -122,7 +122,7 @@ class _State extends State<Slide1> with TickerProviderStateMixin {
     return Center(
       child: Stack(
         children: [
-          Slide1RadialGradient(
+          Slide2RadialGradient(
             opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
           ),
           Container(
@@ -151,6 +151,7 @@ class _State extends State<Slide1> with TickerProviderStateMixin {
                     },
                   ),
                 ),
+                const SizedBox(height: 16),
                 SlidesActions(
                   onNextPressed: () {},
                 ),
@@ -177,24 +178,21 @@ class _AnimatedLines extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: switch (context.deviceOrientation) {
-        Orientation.portrait => 125,
-        Orientation.landscape => 71,
-      },
+      bottom: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Slide1Line1(
+          Slide2Line1(
             maxWidth: constraints.maxWidth,
             animation: line1Animation,
           ),
           SizedBox(
             height: switch (context.deviceOrientation) {
-              Orientation.portrait => 21,
-              Orientation.landscape => 11,
+              Orientation.portrait => 140,
+              Orientation.landscape => 84,
             },
           ),
-          Slide1Line2(
+          Slide2Line2(
             maxWidth: constraints.maxWidth,
             animation: line2Animation,
           ),
@@ -220,20 +218,15 @@ class _AnimatedTitleAndImage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Slide1Title(
+        Slide2Title(
           positionAnimation: titlePositionAnim,
           opacityAnimation: titleAndImageOpacityAnim,
         ),
         const SizedBox(height: 8),
         Flexible(
           child: Padding(
-            padding: EdgeInsets.only(
-              bottom: (switch (context.deviceOrientation) {
-                Orientation.portrait => 70,
-                Orientation.landscape => 40,
-              }),
-            ),
-            child: Slide1Image(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Slide2Image(
               positionAnimation: imagePositionAnim,
               opacityAnimation: titleAndImageOpacityAnim,
             ),

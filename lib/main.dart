@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pro_multimedia_recruitment_task/slide1/slide_1.dart';
 
 import 'config/theme.dart';
+import 'slide2/slide_2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class _SlidesState extends State<Slides> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: Slide1(),
+        child: Slide2(),
       ),
     );
   }
