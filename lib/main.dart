@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'config/theme.dart';
-import 'slide_4/slide_4.dart';
+import 'slide_5/slide_5.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class _SlidesState extends State<Slides> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: Slide4(),
+        child: Slide5(),
       ),
     );
   }
