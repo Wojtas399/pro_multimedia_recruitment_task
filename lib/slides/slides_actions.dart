@@ -13,9 +13,9 @@ class SlidesActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLastSlide
-        ? FilledButton(
+        ? _FilledButton(
             onPressed: () {},
-            child: Text('Zaczynamy'),
+            label: 'Zaczynamy',
           )
         : Row(
             children: [
@@ -66,6 +66,24 @@ class _NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _FilledButton(
+      onPressed: onPressed,
+      label: 'Dalej',
+    );
+  }
+}
+
+class _FilledButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onPressed;
+
+  const _FilledButton({
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: const WidgetStatePropertyAll(
@@ -85,7 +103,7 @@ class _NextButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: const Text('Dalej'),
+      child: Text(label),
     );
   }
 }

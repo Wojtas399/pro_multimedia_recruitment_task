@@ -7,7 +7,7 @@ import 'slides/slide_3/slide_3.dart';
 import 'slides/slide_4/slide_4.dart';
 import 'slides/slide_5/slide_5.dart';
 import 'slides/slide_6/slide_6.dart';
-import 'slides_actions.dart';
+import 'slides/slides_actions.dart';
 
 void main() {
   runApp(const MyApp());
