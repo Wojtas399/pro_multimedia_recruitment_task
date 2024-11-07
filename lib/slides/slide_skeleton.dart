@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../slides_actions.dart';
 import 'slide_animated_position_and_opacity.dart';
 import 'slide_image.dart';
 import 'slide_radial_gradient.dart';
@@ -111,42 +110,31 @@ class _State extends State<SlideSkeleton> with TickerProviderStateMixin {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 500),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: LayoutBuilder(
-                      builder: (_, BoxConstraints constraints) {
-                        return Stack(
-                          children: [
-                            if (widget.linesBuilder != null)
-                              widget.linesBuilder!(constraints),
-                            _TitleAndImage(
-                              title: SlideAnimatedPositionAndOpacity(
-                                positionAnimation: _titlePositionAnim,
-                                opacityAnimation: _titleAndImageOpacityAnim,
-                                child: widget.title,
-                              ),
-                              image: SlideImage(
-                                imagePath: widget.imagePath,
-                                positionAnimation: _imagePositionAnim,
-                                opacityAnimation: _titleAndImageOpacityAnim,
-                              ),
-                              bottomPadding: widget.imageBottomPadding,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SlidesActions(
-                  onNextPressed: () {},
-                ),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              child: LayoutBuilder(
+                builder: (_, BoxConstraints constraints) {
+                  return Stack(
+                    children: [
+                      if (widget.linesBuilder != null)
+                        widget.linesBuilder!(constraints),
+                      _TitleAndImage(
+                        title: SlideAnimatedPositionAndOpacity(
+                          positionAnimation: _titlePositionAnim,
+                          opacityAnimation: _titleAndImageOpacityAnim,
+                          child: widget.title,
+                        ),
+                        image: SlideImage(
+                          imagePath: widget.imagePath,
+                          positionAnimation: _imagePositionAnim,
+                          opacityAnimation: _titleAndImageOpacityAnim,
+                        ),
+                        bottomPadding: widget.imageBottomPadding,
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),

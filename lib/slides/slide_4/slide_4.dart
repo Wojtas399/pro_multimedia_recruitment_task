@@ -11,8 +11,8 @@ class Slide4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SlideSkeleton(
       radialGradientOffset: switch (context.deviceOrientation) {
-        Orientation.portrait => const Offset(65, -55),
-        Orientation.landscape => const Offset(40, -35),
+        Orientation.portrait => const Offset(65, -20),
+        Orientation.landscape => const Offset(40, -3),
       },
       title: const Slide4Title(),
       imagePath: 'assets/5.png',

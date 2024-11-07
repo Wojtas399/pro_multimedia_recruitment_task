@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 
 class SlidesActions extends StatelessWidget {
+  final bool isLastSlide;
   final VoidCallback onNextPressed;
 
   const SlidesActions({
     super.key,
+    required this.isLastSlide,
     required this.onNextPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(
-          child: Center(
-            child: _SkipButton(),
-          ),
-        ),
-        Expanded(
-          child: Center(
-            child: _NextButton(
-              onPressed: onNextPressed,
-            ),
-          ),
-        ),
-      ],
-    );
+    return isLastSlide
+        ? FilledButton(
+            onPressed: () {},
+            child: Text('Zaczynamy'),
+          )
+        : Row(
+            children: [
+              const Expanded(
+                child: Center(
+                  child: _SkipButton(),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: _NextButton(
+                    onPressed: onNextPressed,
+                  ),
+                ),
+              ),
+            ],
+          );
   }
 }
 

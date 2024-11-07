@@ -41,8 +41,8 @@ class _State extends State<Slide6> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return SlideSkeleton(
       radialGradientOffset: switch (context.deviceOrientation) {
-        Orientation.portrait => const Offset(45, -48),
-        Orientation.landscape => const Offset(25, -37),
+        Orientation.portrait => const Offset(45, -13),
+        Orientation.landscape => const Offset(25, -5),
       },
       title: const Slide6Title(),
       imagePath: 'assets/1.png',
