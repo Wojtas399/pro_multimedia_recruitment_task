@@ -117,29 +117,32 @@ class _State extends State<Slide6> with TickerProviderStateMixin {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(
-                    child: LayoutBuilder(
-                      builder: (_, BoxConstraints constraints) {
-                        return Stack(
-                          children: [
-                            Positioned(
-                              bottom: switch (context.deviceOrientation) {
-                                Orientation.portrait => 128,
-                                Orientation.landscape => 78,
-                              },
-                              child: Slide6Line(
-                                maxWidth: constraints.maxWidth,
-                                animation: _lineAnim,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: LayoutBuilder(
+                        builder: (_, BoxConstraints constraints) {
+                          return Stack(
+                            children: [
+                              Positioned(
+                                bottom: switch (context.deviceOrientation) {
+                                  Orientation.portrait => 128,
+                                  Orientation.landscape => 78,
+                                },
+                                child: Slide6Line(
+                                  maxWidth: constraints.maxWidth,
+                                  animation: _lineAnim,
+                                ),
                               ),
-                            ),
-                            _AnimatedTitleAndImage(
-                              titleAndImageOpacityAnim:
-                                  _imageAndTextOpacityAnim,
-                              titlePositionAnim: _textPositionAnim,
-                              imagePositionAnim: _imagePositionAnim,
-                            ),
-                          ],
-                        );
-                      },
+                              _AnimatedTitleAndImage(
+                                titleAndImageOpacityAnim:
+                                    _imageAndTextOpacityAnim,
+                                titlePositionAnim: _textPositionAnim,
+                                imagePositionAnim: _imagePositionAnim,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -169,25 +172,28 @@ class _AnimatedTitleAndImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Slide6Title(
-          positionAnimation: titlePositionAnim,
-          opacityAnimation: titleAndImageOpacityAnim,
-        ),
-        const SizedBox(height: 16),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: SlideImage(
-              imagePath: 'assets/1.png',
-              positionAnimation: imagePositionAnim,
-              opacityAnimation: titleAndImageOpacityAnim,
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Slide6Title(
+            positionAnimation: titlePositionAnim,
+            opacityAnimation: titleAndImageOpacityAnim,
+          ),
+          const SizedBox(height: 16),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: SlideImage(
+                imagePath: 'assets/1.png',
+                positionAnimation: imagePositionAnim,
+                opacityAnimation: titleAndImageOpacityAnim,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

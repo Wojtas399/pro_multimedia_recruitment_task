@@ -100,10 +100,13 @@ class _State extends State<Slide5> with TickerProviderStateMixin {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(
-                    child: _AnimatedTitleAndImage(
-                      titleAndImageOpacityAnim: _imageAndTextOpacityAnim,
-                      titlePositionAnim: _textPositionAnim,
-                      imagePositionAnim: _imagePositionAnim,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: _AnimatedTitleAndImage(
+                        titleAndImageOpacityAnim: _imageAndTextOpacityAnim,
+                        titlePositionAnim: _textPositionAnim,
+                        imagePositionAnim: _imagePositionAnim,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -133,25 +136,28 @@ class _AnimatedTitleAndImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Slide5Title(
-          positionAnimation: titlePositionAnim,
-          opacityAnimation: titleAndImageOpacityAnim,
-        ),
-        const SizedBox(height: 16),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: SlideImage(
-              imagePath: 'assets/6.png',
-              positionAnimation: imagePositionAnim,
-              opacityAnimation: titleAndImageOpacityAnim,
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Slide5Title(
+            positionAnimation: titlePositionAnim,
+            opacityAnimation: titleAndImageOpacityAnim,
+          ),
+          const SizedBox(height: 16),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: SlideImage(
+                imagePath: 'assets/6.png',
+                positionAnimation: imagePositionAnim,
+                opacityAnimation: titleAndImageOpacityAnim,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

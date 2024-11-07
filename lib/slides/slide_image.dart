@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'slide_animated_position_and_opacity.dart';
+
 class SlideImage extends StatelessWidget {
   final String imagePath;
   final Animation<double> positionAnimation;
@@ -14,22 +16,10 @@ class SlideImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: positionAnimation,
-      builder: (_, __) {
-        return AnimatedBuilder(
-          animation: opacityAnimation,
-          builder: (_, __) {
-            return Transform.translate(
-              offset: Offset(positionAnimation.value, 0),
-              child: Opacity(
-                opacity: opacityAnimation.value,
-                child: Image.asset(imagePath),
-              ),
-            );
-          },
-        );
-      },
+    return SlideAnimatedPositionAndOpacity(
+      positionAnimation: positionAnimation,
+      opacityAnimation: opacityAnimation,
+      child: Image.asset(imagePath),
     );
   }
 }

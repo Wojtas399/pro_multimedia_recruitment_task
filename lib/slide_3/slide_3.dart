@@ -103,20 +103,21 @@ class _State extends State<Slide3> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        children: [
-          Slide3RadialGradient(
-            opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
-          ),
-          Center(
-            child: Container(
-              constraints: const BoxConstraints(maxWidth: 500),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
+    return Stack(
+      children: [
+        Slide3RadialGradient(
+          opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
+        ),
+        Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 500),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: SizedBox(
+                    width: double.infinity,
                     child: LayoutBuilder(
                       builder: (_, BoxConstraints constraints) {
                         return Stack(
@@ -142,16 +143,16 @@ class _State extends State<Slide3> with TickerProviderStateMixin {
                       },
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  SlidesActions(
-                    onNextPressed: () {},
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                SlidesActions(
+                  onNextPressed: () {},
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -169,25 +170,28 @@ class _AnimatedTitleAndImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Slide3Title(
-          positionAnimation: titlePositionAnim,
-          opacityAnimation: titleAndImageOpacityAnim,
-        ),
-        const SizedBox(height: 24),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: SlideImage(
-              imagePath: 'assets/4.png',
-              positionAnimation: imagePositionAnim,
-              opacityAnimation: titleAndImageOpacityAnim,
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Slide3Title(
+            positionAnimation: titlePositionAnim,
+            opacityAnimation: titleAndImageOpacityAnim,
+          ),
+          const SizedBox(height: 24),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: SlideImage(
+                imagePath: 'assets/4.png',
+                positionAnimation: imagePositionAnim,
+                opacityAnimation: titleAndImageOpacityAnim,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

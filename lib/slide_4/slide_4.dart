@@ -86,36 +86,37 @@ class _State extends State<Slide4> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        children: [
-          Slide4RadialGradient(
-            opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
-          ),
-          Center(
-            child: Container(
-              constraints: const BoxConstraints(maxWidth: 500),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
+    return Stack(
+      children: [
+        Slide4RadialGradient(
+          opacityAndScaleAnim: _radialGradientOpacityAndScaleAnim,
+        ),
+        Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 500),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: SizedBox(
+                    width: double.infinity,
                     child: _AnimatedTitleAndImage(
                       titleAndImageOpacityAnim: _imageAndTextOpacityAnim,
                       titlePositionAnim: _textPositionAnim,
                       imagePositionAnim: _imagePositionAnim,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  SlidesActions(
-                    onNextPressed: () {},
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                SlidesActions(
+                  onNextPressed: () {},
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -133,25 +134,28 @@ class _AnimatedTitleAndImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Slide4Title(
-          positionAnimation: titlePositionAnim,
-          opacityAnimation: titleAndImageOpacityAnim,
-        ),
-        const SizedBox(height: 8),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: SlideImage(
-              imagePath: 'assets/5.png',
-              positionAnimation: imagePositionAnim,
-              opacityAnimation: titleAndImageOpacityAnim,
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Slide4Title(
+            positionAnimation: titlePositionAnim,
+            opacityAnimation: titleAndImageOpacityAnim,
+          ),
+          const SizedBox(height: 8),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: SlideImage(
+                imagePath: 'assets/5.png',
+                positionAnimation: imagePositionAnim,
+                opacityAnimation: titleAndImageOpacityAnim,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

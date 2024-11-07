@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../slides/slide_animated_position_and_opacity.dart';
+
 class Slide3Title extends StatelessWidget {
   final Animation<double> positionAnimation;
   final Animation<double> opacityAnimation;
@@ -12,24 +14,10 @@ class Slide3Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: positionAnimation,
-      builder: (_, __) {
-        return AnimatedBuilder(
-          animation: opacityAnimation,
-          builder: (_, __) {
-            return Transform.translate(
-              offset: Offset(positionAnimation.value, 0),
-              child: Opacity(
-                opacity: opacityAnimation.value,
-                child: const Center(
-                  child: _Text(),
-                ),
-              ),
-            );
-          },
-        );
-      },
+    return SlideAnimatedPositionAndOpacity(
+      positionAnimation: positionAnimation,
+      opacityAnimation: opacityAnimation,
+      child: const _Text(),
     );
   }
 }
