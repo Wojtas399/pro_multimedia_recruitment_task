@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
+import '../slides/slide_image.dart';
 import '../slides_actions.dart';
-import 'slide_1_image.dart';
 import 'slide_1_line_1.dart';
 import 'slide_1_line_2.dart';
 import 'slide_1_radial_gradient.dart';
@@ -236,7 +236,8 @@ class _AnimatedTitleAndImage extends StatelessWidget {
                 Orientation.landscape => 40,
               }),
             ),
-            child: Slide1Image(
+            child: SlideImage(
+              imagePath: 'assets/2.png',
               positionAnimation: imagePositionAnim,
               opacityAnimation: titleAndImageOpacityAnim,
             ),

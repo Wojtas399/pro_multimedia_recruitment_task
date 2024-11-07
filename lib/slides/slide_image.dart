@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Slide3Image extends StatelessWidget {
+class SlideImage extends StatelessWidget {
+  final String imagePath;
   final Animation<double> positionAnimation;
   final Animation<double> opacityAnimation;
 
-  const Slide3Image({
+  const SlideImage({
     super.key,
+    required this.imagePath,
     required this.positionAnimation,
     required this.opacityAnimation,
   });
@@ -22,7 +24,7 @@ class Slide3Image extends StatelessWidget {
               offset: Offset(positionAnimation.value, 0),
               child: Opacity(
                 opacity: opacityAnimation.value,
-                child: Image.asset('assets/4.png'),
+                child: Image.asset(imagePath),
               ),
             );
           },

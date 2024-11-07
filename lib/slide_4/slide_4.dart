@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../slides/slide_image.dart';
 import '../slides_actions.dart';
-import 'slide_4_image.dart';
 import 'slide_4_radial_gradient.dart';
 import 'slide_4_title.dart';
 
@@ -144,7 +144,8 @@ class _AnimatedTitleAndImage extends StatelessWidget {
         Flexible(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
-            child: Slide4Image(
+            child: SlideImage(
+              imagePath: 'assets/5.png',
               positionAnimation: imagePositionAnim,
               opacityAnimation: titleAndImageOpacityAnim,
             ),

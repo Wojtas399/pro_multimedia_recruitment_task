@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
+import '../slides/slide_image.dart';
 import '../slides_actions.dart';
-import 'slide_2_image.dart';
 import 'slide_2_line_1.dart';
 import 'slide_2_line_2.dart';
 import 'slide_2_radial_gradient.dart';
@@ -229,7 +229,8 @@ class _AnimatedTitleAndImage extends StatelessWidget {
         Flexible(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
-            child: Slide2Image(
+            child: SlideImage(
+              imagePath: 'assets/3.png',
               positionAnimation: imagePositionAnim,
               opacityAnimation: titleAndImageOpacityAnim,
             ),
