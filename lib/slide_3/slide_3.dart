@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
+import '../slides/slide_animated_position_and_opacity.dart';
 import '../slides/slide_image.dart';
 import '../slides_actions.dart';
 import 'slide_3_line.dart';
@@ -175,9 +176,10 @@ class _AnimatedTitleAndImage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Slide3Title(
+          SlideAnimatedPositionAndOpacity(
             positionAnimation: titlePositionAnim,
             opacityAnimation: titleAndImageOpacityAnim,
+            child: const Slide3Title(),
           ),
           const SizedBox(height: 24),
           Flexible(

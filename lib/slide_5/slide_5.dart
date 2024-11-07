@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../slides/slide_animated_position_and_opacity.dart';
 import '../slides/slide_image.dart';
 import '../slides_actions.dart';
 import 'slide_5_radial_gradient.dart';
@@ -141,9 +142,10 @@ class _AnimatedTitleAndImage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Slide5Title(
+          SlideAnimatedPositionAndOpacity(
             positionAnimation: titlePositionAnim,
             opacityAnimation: titleAndImageOpacityAnim,
+            child: const Slide5Title(),
           ),
           const SizedBox(height: 16),
           Flexible(

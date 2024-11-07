@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../extensions/build_context_extensions.dart';
+import '../slides/slide_animated_position_and_opacity.dart';
 import '../slides/slide_image.dart';
 import '../slides_actions.dart';
 import 'slide_2_line_1.dart';
@@ -128,7 +129,6 @@ class _State extends State<Slide2> with TickerProviderStateMixin {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 500),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            color: Colors.red,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -225,9 +225,10 @@ class _AnimatedTitleAndImage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Slide2Title(
+          SlideAnimatedPositionAndOpacity(
             positionAnimation: titlePositionAnim,
             opacityAnimation: titleAndImageOpacityAnim,
+            child: const Slide2Title(),
           ),
           const SizedBox(height: 8),
           Flexible(
