@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../title_large.dart';
+
 class Slide6Title extends StatelessWidget {
   const Slide6Title({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Colors.white,
-        );
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Złap ',
-          style: textStyle,
-        ),
-        Text(
+        TitleLarge('Złap '),
+        TitleLarge(
           'swój rytm',
-          style: textStyle?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          fontWeight: FontWeight.bold,
         ),
-        Text(
-          '!',
-          style: textStyle,
-        ),
+        TitleLarge('!'),
       ],
     );
   }

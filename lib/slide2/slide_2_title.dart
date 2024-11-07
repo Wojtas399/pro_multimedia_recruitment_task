@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../title_large.dart';
+
 class Slide2Title extends StatelessWidget {
   const Slide2Title({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Colors.white,
-        );
-    return Column(
+    return const Column(
       children: [
-        Text(
+        TitleLarge(
           'Bierz udział',
-          style: textStyle?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          fontWeight: FontWeight.bold,
         ),
-        Text(
-          'w wydarzeniach!',
-          style: textStyle,
-        ),
+        TitleLarge('w wydarzeniach!'),
       ],
     );
   }

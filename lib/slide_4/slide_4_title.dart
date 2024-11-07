@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../title_large.dart';
+
 class Slide4Title extends StatelessWidget {
   const Slide4Title({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Colors.white,
-        );
-    return Column(
+    return const Column(
       children: [
-        Text(
-          'Ustawiaj',
-          style: textStyle,
-        ),
+        TitleLarge('Ustawiaj'),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            TitleLarge(
               'przypomnienia',
-              style: textStyle?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              fontWeight: FontWeight.bold,
             ),
-            Text(
-              '!',
-              style: textStyle,
-            ),
+            TitleLarge('!'),
           ],
         ),
       ],
