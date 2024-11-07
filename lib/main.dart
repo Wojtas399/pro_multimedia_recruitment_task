@@ -50,6 +50,16 @@ class _SlidesState extends State<Slides> {
     });
   }
 
+  Future<void> _finish() async {
+    await showDialog(
+      context: context,
+      builder: (_) => const AlertDialog(
+        title: Text('Akuku!'),
+        content: Text('Nie wiem gdzie iść dalej...'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +74,7 @@ class _SlidesState extends State<Slides> {
               SlidesActions(
                 isLastSlide: _currentSlideIndex == _slides.length - 1,
                 onNextPressed: _nextSlide,
+                onFinishPressed: _finish,
               ),
               const SizedBox(height: 24),
             ],

@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 class SlidesActions extends StatelessWidget {
   final bool isLastSlide;
   final VoidCallback onNextPressed;
+  final VoidCallback onFinishPressed;
 
   const SlidesActions({
     super.key,
     required this.isLastSlide,
     required this.onNextPressed,
+    required this.onFinishPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return isLastSlide
         ? _FilledButton(
-            onPressed: () {},
+            onPressed: onFinishPressed,
             label: 'Zaczynamy',
           )
         : Row(
