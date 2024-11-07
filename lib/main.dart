@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'config/theme.dart';
-import 'slide_6/slide_6.dart';
+import 'slides/slide_6/slide_6.dart';
 
 void main() {
   runApp(const MyApp());

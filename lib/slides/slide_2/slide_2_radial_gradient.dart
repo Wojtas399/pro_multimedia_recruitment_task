@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extensions.dart';
-import '../slides/slide_radial_gradient.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../slides/slide_radial_gradient.dart';
 
 class Slide2RadialGradient extends StatelessWidget {
   final Animation<double> opacityAndScaleAnim;

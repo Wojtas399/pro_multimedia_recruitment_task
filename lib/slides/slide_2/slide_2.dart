@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extensions.dart';
-import '../slides/slide_skeleton.dart';
-import 'slide_1_line_1.dart';
-import 'slide_1_line_2.dart';
-import 'slide_1_title.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../slides/slide_skeleton.dart';
+import 'slide_2_line_1.dart';
+import 'slide_2_line_2.dart';
+import 'slide_2_title.dart';
 
-class Slide1 extends StatefulWidget {
-  const Slide1({super.key});
+class Slide2 extends StatefulWidget {
+  const Slide2({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +15,7 @@ class Slide1 extends StatefulWidget {
   }
 }
 
-class _State extends State<Slide1> with TickerProviderStateMixin {
+class _State extends State<Slide2> with TickerProviderStateMixin {
   late AnimationController _line1AnimController;
   late AnimationController _line2AnimController;
   late Animation<double> _line1Anim;
@@ -57,21 +57,17 @@ class _State extends State<Slide1> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return SlideSkeleton(
       radialGradientOffset: switch (context.deviceOrientation) {
-        Orientation.portrait => const Offset(0, -75),
-        Orientation.landscape => const Offset(0, -46),
+        Orientation.portrait => const Offset(21, 6),
+        Orientation.landscape => const Offset(13, 0),
       },
-      title: const Slide1Title(),
-      imagePath: 'assets/2.png',
+      title: const Slide2Title(),
+      imagePath: 'assets/3.png',
       linesBuilder: (BoxConstraints constraints) {
         return _AnimatedLines(
           line1Animation: _line1Anim,
           line2Animation: _line2Anim,
           constraints: constraints,
         );
-      },
-      imageBottomPadding: switch (context.deviceOrientation) {
-        Orientation.portrait => 55,
-        Orientation.landscape => 29,
       },
     );
   }
@@ -91,24 +87,21 @@ class _AnimatedLines extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: switch (context.deviceOrientation) {
-        Orientation.portrait => 110,
-        Orientation.landscape => 60,
-      },
+      bottom: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Slide1Line1(
+          Slide2Line1(
             maxWidth: constraints.maxWidth,
             animation: line1Animation,
           ),
           SizedBox(
             height: switch (context.deviceOrientation) {
-              Orientation.portrait => 21,
-              Orientation.landscape => 11,
+              Orientation.portrait => 140,
+              Orientation.landscape => 84,
             },
           ),
-          Slide1Line2(
+          Slide2Line2(
             maxWidth: constraints.maxWidth,
             animation: line2Animation,
           ),

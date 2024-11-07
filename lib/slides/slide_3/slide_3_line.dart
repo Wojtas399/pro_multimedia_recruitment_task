@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../animated_path_service.dart';
-import '../extensions/build_context_extensions.dart';
-import '../path_service.dart';
+import '../../animated_path_service.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../path_service.dart';
 
-class Slide6Line extends StatelessWidget {
+class Slide3Line extends StatelessWidget {
   final double maxWidth;
   final Animation<double> animation;
 
-  const Slide6Line({
+  const Slide3Line({
     super.key,
     required this.maxWidth,
     required this.animation,
@@ -40,32 +40,26 @@ class _LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final animationPercent = animation.value;
-    final points = switch (orientation) {
-      Orientation.portrait => [
-          Offset(maxWidth, 0),
-          Offset(maxWidth * .35, 0),
-          Offset(maxWidth * .14, 0),
-          Offset(maxWidth * .14, 73),
-          Offset(maxWidth * .35, 73),
-          Offset(maxWidth - 120, 73),
-          Offset(maxWidth - 85, 73),
-          Offset(maxWidth - 85, 100),
-          Offset(maxWidth - 120, 100),
-          Offset(maxWidth * .41, 100),
-        ],
-      Orientation.landscape => [
-          Offset(maxWidth, 0),
-          Offset(maxWidth * .11, 0),
-          Offset(maxWidth * .01, 0),
-          Offset(maxWidth * .01, 39),
-          Offset(maxWidth * .12, 39),
-          Offset(maxWidth - 100, 39),
-          Offset(maxWidth - 80, 39),
-          Offset(maxWidth - 80, 54),
-          Offset(maxWidth - 100, 54),
-          Offset(maxWidth * .46, 54),
-        ],
+    final double heightSpaceBetweenLines = switch (orientation) {
+      Orientation.portrait => 57,
+      Orientation.landscape => 32,
     };
+    final double endLinePercentage = switch (orientation) {
+      Orientation.portrait => .75,
+      Orientation.landscape => .605,
+    };
+    final points = [
+      Offset.zero,
+      Offset(maxWidth - 125, 0),
+      Offset(maxWidth - 40, 0),
+      Offset(maxWidth - 40, heightSpaceBetweenLines),
+      Offset(maxWidth - 125, heightSpaceBetweenLines),
+      Offset(155, heightSpaceBetweenLines),
+      Offset(70, heightSpaceBetweenLines),
+      Offset(70, heightSpaceBetweenLines * 2),
+      Offset(155, heightSpaceBetweenLines * 2),
+      Offset(maxWidth * endLinePercentage, heightSpaceBetweenLines * 2),
+    ];
     final path = PathService().generateSnakeLinePath(points);
     final animatedPath =
         AnimatedPathService().createAnimatedPath(path, animationPercent);

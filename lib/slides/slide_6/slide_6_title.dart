@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../title_large.dart';
+import '../../title_large.dart';
 
 class Slide6Title extends StatelessWidget {
   const Slide6Title({super.key});

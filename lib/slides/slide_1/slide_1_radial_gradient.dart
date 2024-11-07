@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extensions.dart';
-import '../slides/slide_radial_gradient.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../slides/slide_radial_gradient.dart';
 
-class Slide4RadialGradient extends StatelessWidget {
+class Slide1RadialGradient extends StatelessWidget {
   final Animation<double> opacityAndScaleAnim;
 
-  const Slide4RadialGradient({
+  const Slide1RadialGradient({
     super.key,
     required this.opacityAndScaleAnim,
   });
@@ -15,14 +15,14 @@ class Slide4RadialGradient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: switch (context.deviceOrientation) {
-        Orientation.portrait => -70,
-        Orientation.landscape => -30,
+        Orientation.portrait => -140,
+        Orientation.landscape => -60,
       },
-      left: 0,
-      right: switch (context.deviceOrientation) {
-        Orientation.portrait => -65,
-        Orientation.landscape => -35,
+      left: switch (context.deviceOrientation) {
+        Orientation.portrait => -8,
+        Orientation.landscape => -5,
       },
+      right: 0,
       bottom: 0,
       child: SlideRadialGradient(
         opacityAndScaleAnim: opacityAndScaleAnim,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../animated_path_service.dart';
-import '../extensions/build_context_extensions.dart';
-import '../path_service.dart';
+import '../../animated_path_service.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../path_service.dart';
 
 class Slide1Line2 extends StatelessWidget {
   final double maxWidth;

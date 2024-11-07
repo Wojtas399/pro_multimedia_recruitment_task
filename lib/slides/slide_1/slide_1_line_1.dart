@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../animated_path_service.dart';
+import '../../animated_path_service.dart';
 
-class Slide2Line2 extends StatelessWidget {
+class Slide1Line1 extends StatelessWidget {
   final double maxWidth;
   final Animation<double> animation;
 
-  const Slide2Line2({
+  const Slide1Line1({
     super.key,
     required this.maxWidth,
     required this.animation,
@@ -35,15 +35,15 @@ class _LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final animationPercent = animation.value;
-    final paint = Paint()
-      ..color = Colors.white
-      ..strokeWidth = 0.5
-      ..style = PaintingStyle.stroke;
     final path = Path();
     path.moveTo(0, 0);
     path.lineTo(maxWidth, 0);
     final animatedPath =
         AnimatedPathService().createAnimatedPath(path, animationPercent);
+    final paint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 0.5
+      ..style = PaintingStyle.stroke;
     canvas.drawPath(animatedPath, paint);
   }
 

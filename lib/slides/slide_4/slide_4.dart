@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extensions.dart';
-import '../slides/slide_skeleton.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../slides/slide_skeleton.dart';
 import 'slide_4_title.dart';
 
 class Slide4 extends StatelessWidget {

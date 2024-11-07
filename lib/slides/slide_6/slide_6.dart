@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extensions.dart';
-import '../slides/slide_skeleton.dart';
-import 'slide_3_line.dart';
-import 'slide_3_title.dart';
+import '../../extensions/build_context_extensions.dart';
+import '../../slides/slide_skeleton.dart';
+import 'slide_6_line.dart';
+import 'slide_6_title.dart';
 
-class Slide3 extends StatefulWidget {
-  const Slide3({super.key});
+class Slide6 extends StatefulWidget {
+  const Slide6({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -14,7 +14,7 @@ class Slide3 extends StatefulWidget {
   }
 }
 
-class _State extends State<Slide3> with TickerProviderStateMixin {
+class _State extends State<Slide6> with TickerProviderStateMixin {
   late AnimationController _lineAnimController;
   late Animation<double> _lineAnim;
 
@@ -41,18 +41,18 @@ class _State extends State<Slide3> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return SlideSkeleton(
       radialGradientOffset: switch (context.deviceOrientation) {
-        Orientation.portrait => const Offset(18, -50),
-        Orientation.landscape => const Offset(15, -33),
+        Orientation.portrait => const Offset(45, -48),
+        Orientation.landscape => const Offset(25, -37),
       },
-      title: const Slide3Title(),
-      imagePath: 'assets/4.png',
+      title: const Slide6Title(),
+      imagePath: 'assets/1.png',
       linesBuilder: (BoxConstraints constraints) {
         return Positioned(
           bottom: switch (context.deviceOrientation) {
-            Orientation.portrait => 140,
-            Orientation.landscape => 85,
+            Orientation.portrait => 128,
+            Orientation.landscape => 78,
           },
-          child: Slide3Line(
+          child: Slide6Line(
             maxWidth: constraints.maxWidth,
             animation: _lineAnim,
           ),
