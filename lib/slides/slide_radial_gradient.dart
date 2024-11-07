@@ -24,8 +24,8 @@ class SlideRadialGradient extends StatelessWidget {
                 gradient: RadialGradient(
                   center: Alignment.center,
                   radius: switch (context.deviceOrientation) {
-                    Orientation.portrait => .32,
-                    Orientation.landscape => .19,
+                    Orientation.portrait => .33,
+                    Orientation.landscape => .20,
                   },
                   colors: [
                     const Color(0xFFC3E3FF),
