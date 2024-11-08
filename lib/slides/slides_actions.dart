@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../extensions/build_context_extensions.dart';
+
 class SlidesActions extends StatelessWidget {
   final bool isLastSlide;
   final VoidCallback onNextPressed;
@@ -15,21 +17,30 @@ class SlidesActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLastSlide
-        ? _FilledButton(
-            onPressed: onFinishPressed,
-            label: 'Zaczynamy',
+        ? SizedBox(
+            width: 175,
+            child: _FilledButton(
+              onPressed: onFinishPressed,
+              label: '${context.str.buttonStart}!',
+            ),
           )
         : Row(
             children: [
               const Expanded(
                 child: Center(
-                  child: _SkipButton(),
+                  child: SizedBox(
+                    width: 150,
+                    child: _SkipButton(),
+                  ),
                 ),
               ),
               Expanded(
                 child: Center(
-                  child: _NextButton(
-                    onPressed: onNextPressed,
+                  child: SizedBox(
+                    width: 150,
+                    child: _NextButton(
+                      onPressed: onNextPressed,
+                    ),
                   ),
                 ),
               ),
@@ -54,7 +65,7 @@ class _SkipButton extends StatelessWidget {
         ),
       ),
       onPressed: () {},
-      child: const Text('Pomiń'),
+      child: Text(context.str.buttonSkip),
     );
   }
 }
@@ -70,7 +81,7 @@ class _NextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return _FilledButton(
       onPressed: onPressed,
-      label: 'Dalej',
+      label: context.str.buttonNext,
     );
   }
 }

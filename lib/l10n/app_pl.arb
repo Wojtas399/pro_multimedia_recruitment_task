@@ -12,6 +12,9 @@
   "slide5BoldedText": "na bieżąco",
   "slide6LeadingText": "Złap",
   "slide6BoldedText": "swój rytm",
+  "buttonSkip": "Pomiń",
+  "buttonNext": "Dalej",
+  "buttonStart": "Zaczynamy",
   "finishDialogTitle": "Akuku",
   "finishDialogMessage": "Nie wiem gdzie iść dalej..."
 }

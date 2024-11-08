@@ -87,12 +87,14 @@ class _SlidesState extends State<_Slides> {
         Expanded(
           child: _slides[_currentSlideIndex],
         ),
-        SlidesActions(
-          isLastSlide: _currentSlideIndex == _slides.length - 1,
-          onNextPressed: _nextSlide,
-          onFinishPressed: _finish,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+          child: SlidesActions(
+            isLastSlide: _currentSlideIndex == _slides.length - 1,
+            onNextPressed: _nextSlide,
+            onFinishPressed: _finish,
+          ),
         ),
-        const SizedBox(height: 24),
       ],
     );
   }
