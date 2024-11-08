@@ -63,6 +63,12 @@ class _SlidesState extends State<_Slides> {
   ];
   int _currentSlideIndex = 0;
 
+  void _skip() {
+    setState(() {
+      _currentSlideIndex = _slides.length - 1;
+    });
+  }
+
   void _nextSlide() {
     setState(() {
       _currentSlideIndex = _currentSlideIndex + 1;
@@ -91,6 +97,7 @@ class _SlidesState extends State<_Slides> {
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
           child: SlidesActions(
             isLastSlide: _currentSlideIndex == _slides.length - 1,
+            onSkipPressed: _skip,
             onNextPressed: _nextSlide,
             onFinishPressed: _finish,
           ),

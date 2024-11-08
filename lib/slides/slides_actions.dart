@@ -4,12 +4,14 @@ import '../extensions/build_context_extensions.dart';
 
 class SlidesActions extends StatelessWidget {
   final bool isLastSlide;
+  final VoidCallback onSkipPressed;
   final VoidCallback onNextPressed;
   final VoidCallback onFinishPressed;
 
   const SlidesActions({
     super.key,
     required this.isLastSlide,
+    required this.onSkipPressed,
     required this.onNextPressed,
     required this.onFinishPressed,
   });
@@ -26,11 +28,13 @@ class SlidesActions extends StatelessWidget {
           )
         : Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: Center(
                   child: SizedBox(
                     width: 150,
-                    child: _SkipButton(),
+                    child: _SkipButton(
+                      onPressed: onSkipPressed,
+                    ),
                   ),
                 ),
               ),
@@ -50,7 +54,11 @@ class SlidesActions extends StatelessWidget {
 }
 
 class _SkipButton extends StatelessWidget {
-  const _SkipButton();
+  final VoidCallback onPressed;
+
+  const _SkipButton({
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +72,7 @@ class _SkipButton extends StatelessWidget {
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(context.str.buttonSkip),
     );
   }
