@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../extensions/build_context_extensions.dart';
 import '../../title_large.dart';
 
 class Slide4Title extends StatelessWidget {
@@ -7,17 +8,17 @@ class Slide4Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        TitleLarge('Ustawiaj'),
+        TitleLarge(context.str.slide4LeadingText),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TitleLarge(
-              'przypomnienia',
+              context.str.slide4BoldedText,
               fontWeight: FontWeight.bold,
             ),
-            TitleLarge('!'),
+            const TitleLarge('!'),
           ],
         ),
       ],
