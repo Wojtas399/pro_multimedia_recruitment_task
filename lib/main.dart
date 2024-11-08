@@ -21,23 +21,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'ProMultimedia recruitment task',
       theme: CustomTheme().themeData,
       localizationsDelegates: Str.localizationsDelegates,
       supportedLocales: Str.supportedLocales,
-      home: const Slides(),
+      home: const _Home(),
     );
   }
 }
 
-class Slides extends StatefulWidget {
-  const Slides({super.key});
+class _Home extends StatelessWidget {
+  const _Home();
 
   @override
-  State<Slides> createState() => _SlidesState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: _Slides(),
+        ),
+      ),
+    );
+  }
 }
 
-class _SlidesState extends State<Slides> {
+class _Slides extends StatefulWidget {
+  const _Slides();
+
+  @override
+  State<_Slides> createState() => _SlidesState();
+}
+
+class _SlidesState extends State<_Slides> {
   final List<Widget> _slides = const [
     Slide1(),
     Slide2(),
@@ -66,25 +81,19 @@ class _SlidesState extends State<Slides> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: _slides[_currentSlideIndex],
-              ),
-              SlidesActions(
-                isLastSlide: _currentSlideIndex == _slides.length - 1,
-                onNextPressed: _nextSlide,
-                onFinishPressed: _finish,
-              ),
-              const SizedBox(height: 24),
-            ],
-          ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          child: _slides[_currentSlideIndex],
         ),
-      ),
+        SlidesActions(
+          isLastSlide: _currentSlideIndex == _slides.length - 1,
+          onNextPressed: _nextSlide,
+          onFinishPressed: _finish,
+        ),
+        const SizedBox(height: 24),
+      ],
     );
   }
 }
