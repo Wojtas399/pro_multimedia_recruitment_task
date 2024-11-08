@@ -10,12 +10,12 @@ class Slide1Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleLarge(context.str.slide1LeadingText ?? ''),
+        TitleLarge(context.str.slide1LeadingText),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TitleLarge(
-              context.str.slide1BoldedText ?? '',
+              context.str.slide1BoldedText,
               fontWeight: FontWeight.bold,
             ),
             const TitleLarge('!'),
