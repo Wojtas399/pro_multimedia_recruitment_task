@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'slide_animated_position_and_opacity.dart';
-import 'slide_image.dart';
 import 'slide_radial_gradient.dart';
 
 class SlideSkeleton extends StatefulWidget {
@@ -134,10 +133,10 @@ class _State extends State<SlideSkeleton> with TickerProviderStateMixin {
                           opacityAnimation: _titleAndImageOpacityAnim,
                           child: widget.title,
                         ),
-                        image: SlideImage(
-                          imagePath: widget.imagePath,
+                        image: SlideAnimatedPositionAndOpacity(
                           positionAnimation: _imagePositionAnim,
                           opacityAnimation: _titleAndImageOpacityAnim,
+                          child: Image.asset(widget.imagePath),
                         ),
                         bottomPadding: widget.imageBottomPadding,
                       ),

@@ -26,30 +26,48 @@ class SlidesActions extends StatelessWidget {
               label: '${context.str.buttonStart}!',
             ),
           )
-        : Row(
-            children: [
-              Expanded(
-                child: Center(
-                  child: SizedBox(
-                    width: 150,
-                    child: _SkipButton(
-                      onPressed: onSkipPressed,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: SizedBox(
-                    width: 150,
-                    child: _NextButton(
-                      onPressed: onNextPressed,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+        : _SkipAndNextButtons(
+            onSkipPressed: onSkipPressed,
+            onNextPressed: onNextPressed,
           );
+  }
+}
+
+class _SkipAndNextButtons extends StatelessWidget {
+  final VoidCallback onSkipPressed;
+  final VoidCallback onNextPressed;
+
+  const _SkipAndNextButtons({
+    required this.onSkipPressed,
+    required this.onNextPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Center(
+            child: SizedBox(
+              width: 150,
+              child: _SkipButton(
+                onPressed: onSkipPressed,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: SizedBox(
+              width: 150,
+              child: _NextButton(
+                onPressed: onNextPressed,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -66,10 +84,7 @@ class _SkipButton extends StatelessWidget {
       style: ButtonStyle(
         foregroundColor: const WidgetStatePropertyAll(Color(0xFFB2B2B2)),
         textStyle: WidgetStatePropertyAll(
-          Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+          context.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       onPressed: onPressed,
@@ -117,10 +132,7 @@ class _FilledButton extends StatelessWidget {
           ),
         ),
         textStyle: WidgetStatePropertyAll(
-          Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+          context.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       onPressed: onPressed,
