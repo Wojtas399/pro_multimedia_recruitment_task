@@ -26,6 +26,12 @@ class _State extends State<Slide6> with TickerProviderStateMixin {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _lineAnimController.dispose();
+    super.dispose();
+  }
+
   void _initializeLineAnim(Cubic curves) {
     _lineAnimController = AnimationController(
       vsync: this,

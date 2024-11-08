@@ -36,6 +36,7 @@ class _State extends State<SlideSkeleton> with TickerProviderStateMixin {
   late Animation<double> _titlePositionAnim;
   late Animation<double> _imagePositionAnim;
   late Animation<double> _titleAndImageOpacityAnim;
+  late Timer _titleAndImageTriggerTimer;
 
   @override
   void initState() {
@@ -43,7 +44,7 @@ class _State extends State<SlideSkeleton> with TickerProviderStateMixin {
     _initializeRadialAnimation(curves);
     _initializeImageAndTextAnim(curves);
     _radialGradientAnimController.forward();
-    Timer(
+    _titleAndImageTriggerTimer = Timer(
       const Duration(milliseconds: 500),
       () {
         _titleAndImagePositionAnimController.forward();
@@ -51,6 +52,15 @@ class _State extends State<SlideSkeleton> with TickerProviderStateMixin {
       },
     );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleAndImageTriggerTimer.cancel();
+    _radialGradientAnimController.dispose();
+    _titleAndImagePositionAnimController.dispose();
+    _titleAndImageOpacityAnimController.dispose();
+    super.dispose();
   }
 
   void _initializeRadialAnimation(Cubic curves) {
